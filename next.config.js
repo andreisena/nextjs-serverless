@@ -1,7 +1,12 @@
-module.exports = {
+const withPWA = require('next-pwa')
+
+module.exports = withPWA({
   target: "serverless",
   experimental: {
     modern: true
+  },
+  pwa: {
+    dest: 'public'
   },
   webpack(config) {
     const splitChunks = config.optimization && config.optimization.splitChunks;
@@ -24,4 +29,4 @@ module.exports = {
 
     return config;
   }
-};
+});
