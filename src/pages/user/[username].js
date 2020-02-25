@@ -102,7 +102,7 @@ const Home = ({ info, repos, error }) => {
         />
       </Head>
       <Flex justifyContent="center" my={[10, 20]}>
-        <Avatar name={info.name} src={info.avatar_url} />
+        <Avatar name={info.name} src={`${info.avatar_url}&s=48`} />
         <Box ml="3">
           <Text fontWeight="bold">{info.name}</Text>
           {!!info.company && <Text fontSize="sm">{info.company}</Text>}

@@ -1,9 +1,11 @@
+import { extractCritical } from "emotion-server";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+  static getInitialProps({ renderPage }) {
+    const page = renderPage();
+    const styles = extractCritical(page.html);
+    return { ...page, ...styles };
   }
 
   render() {
@@ -18,6 +20,10 @@ class MyDocument extends Document {
           <meta
             name="description"
             content="Sample Next.js application using serverless component."
+          />
+          <style
+            data-emotion-css={this.props.ids.join(" ")}
+            dangerouslySetInnerHTML={{ __html: this.props.css }}
           />
         </Head>
         <body>
