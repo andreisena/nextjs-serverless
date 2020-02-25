@@ -12,6 +12,7 @@ import {
 import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
+import Head from "next/head";
 
 const Home = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -34,6 +35,9 @@ const Home = () => {
       px={[4, 20]}
       my={20}
     >
+      <Head>
+        <title>Serverless Next.js Example - GitHub User Info</title>
+      </Head>
       <Heading size="lg" textAlign="center">
         Serverless Next.js Example
       </Heading>
