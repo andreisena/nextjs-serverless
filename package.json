@@ -13,6 +13,7 @@
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "axios": "^0.19.2",
+    "emoji-dictionary": "^1.0.10",
     "emotion": "^10.0.27",
     "emotion-server": "^10.0.27",
     "emotion-theming": "^10.0.27",
@@ -23,6 +24,7 @@
     "react-dom": "github:preact-compat/react-dom#1.0.0",
     "react-hook-form": "^4.9.8",
     "react-icons": "^3.9.0",
+    "react-markdown": "^4.3.1",
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1"
   },
   "devDependencies": {

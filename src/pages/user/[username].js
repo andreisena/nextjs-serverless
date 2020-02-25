@@ -3,24 +3,29 @@ import {
   Badge,
   Box,
   Flex,
+  Grid,
   Heading,
-  Icon,
   Text,
-  Stack,
   PseudoBox
 } from "@chakra-ui/core";
 import axios from "axios";
+import emoji from "emoji-dictionary";
 import Error from "next/error";
 import Head from "next/head";
 import { GoRepoForked, GoStar } from "react-icons/go";
+import Markdown from "react-markdown";
 
 import colors from "../../utils/colors";
 
+const emojiSupport = text =>
+  text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name));
+
 const Repo = ({ repo, ...rest }) => {
   return (
-    <Box
+    <Flex
       p={5}
       pos="relative"
+      flexDir="column"
       borderWidth="1px"
       borderStyle="solid"
       borderColor="gray.300"
@@ -44,13 +49,18 @@ const Repo = ({ repo, ...rest }) => {
           Fork
         </Badge>
       )}
-      {!!repo.description ? (
-        <Text mt={4}>{repo.description}</Text>
-      ) : (
-        <Text as="em" mt={4} display="inline-block">
-          No description provided.
-        </Text>
-      )}
+      <Box mt={4} flex="1">
+        {!!repo.description ? (
+          <Markdown
+            source={repo.description}
+            renderers={{ text: emojiSupport }}
+          />
+        ) : (
+          <Text as="em" mt={4} display="inline-block">
+            No description provided.
+          </Text>
+        )}
+      </Box>
       <Flex mt={4}>
         {repo.language && (
           <Flex mr={5} alignItems="center">
@@ -83,7 +93,7 @@ const Repo = ({ repo, ...rest }) => {
           </Flex>
         )}
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 
@@ -114,11 +124,11 @@ const Home = ({ info, repos, error }) => {
           </Badge>
         </Box>
       </Flex>
-      <Stack spacing={4}>
+      <Grid templateColumns={[null, null, "repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={4}>
         {repos.map(repo => (
           <Repo key={repo.id} repo={repo} />
         ))}
-      </Stack>
+      </Grid>
     </Box>
   );
 };
