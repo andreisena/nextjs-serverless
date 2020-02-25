@@ -10,8 +10,10 @@ import {
   PseudoBox
 } from "@chakra-ui/core";
 import axios from "axios";
-import { GoRepoForked, GoStar } from "react-icons/go";
 import Error from "next/error";
+import Head from "next/head";
+import { GoRepoForked, GoStar } from "react-icons/go";
+
 import colors from "../../utils/colors";
 
 const Repo = ({ repo, ...rest }) => {
@@ -30,8 +32,9 @@ const Repo = ({ repo, ...rest }) => {
           as="a"
           href={`https://github.com/${repo.full_name}`}
           target="_blank"
-          color="blue.500"
-          _hover={{ color: "blue.700" }}
+          rel="noopener"
+          color="blue.700"
+          _hover={{ color: "blue.500" }}
         >
           {repo.name}
         </PseudoBox>
@@ -90,7 +93,14 @@ const Home = ({ info, repos, error }) => {
   }
 
   return (
-    <Box px={[4, 20]}>
+    <Box px={[4, 20]} mb={[4, 20]}>
+      <Head>
+        <title>GitHub Info - User @{info.login}</title>
+        <meta
+          name="description"
+          content={info.bio || `GitHub information of @${info.login}.`}
+        />
+      </Head>
       <Flex justifyContent="center" my={[10, 20]}>
         <Avatar name={info.name} src={info.avatar_url} />
         <Box ml="3">

@@ -27,23 +27,38 @@ const Home = () => {
   };
 
   return (
-    <Flex flexDir="column" justifyContent="center" width="100%" padding={20}>
-      <Heading size="md" mb={20} textAlign="center">
-        Serverless Next.js with @chakra-ui
+    <Flex
+      flexDir="column"
+      justifyContent="center"
+      width="100%"
+      px={[4, 20]}
+      my={20}
+    >
+      <Heading size="lg" textAlign="center">
+        Serverless Next.js Example
+      </Heading>
+      <Heading size="xs" mt={2} textAlign="center">
+        GitHub User Info
       </Heading>
       <Box
         as="form"
         p={4}
         mx="auto"
-        width="400px"
+        mt={[10, 20]}
+        width={["100%", "400px"]}
         shadow="md"
+        borderWidth="1px"
+        borderStyle="solid"
+        borderColor="gray.100"
+        borderRadius="md"
         onSubmit={handleSubmit(onSubmit)}
         novalidate
       >
-        <FormControl isInvalid={errors.name}>
+        <FormControl isInvalid={!!errors.name} isRequired>
           <FormLabel htmlFor="name">GitHub User</FormLabel>
           <Input
             name="name"
+            placeholder="Type your GitHub username"
             ref={register({
               required: "Required",
               pattern: {
