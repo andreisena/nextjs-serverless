@@ -109,3 +109,10 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# Mac Cache
+.DS_Store
+
+# PWA Generated Files
+public/sw.js
+public/workbox-*.js

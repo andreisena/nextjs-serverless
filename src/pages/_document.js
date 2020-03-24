@@ -20,6 +20,21 @@ class MyDocument extends Document {
             name="description"
             content="Sample Next.js application using serverless component."
           />
+          <link rel="manifest" href="/manifest.json" />
+          <link
+            href="/images/icons/favicon-16x16.png"
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+          />
+          <link
+            href="/images/icons/favicon-32x32.png"
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+          />
+          <link rel="apple-touch-icon" href="/images/icons/apple-icon-180x180.png"></link>
+          <meta name="theme-color" content="#3d5a71" />
           <style
             data-emotion-css={this.props.ids.join(" ")}
             dangerouslySetInnerHTML={{ __html: this.props.css }}

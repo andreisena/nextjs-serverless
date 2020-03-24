@@ -36,13 +36,13 @@ const Home = () => {
       my={20}
     >
       <Head>
-        <title>Serverless Next.js Example - GitHub User Info</title>
+        <title>GitHub User Info - Serverless Next.js Example</title>
       </Head>
       <Heading size="lg" textAlign="center">
-        Serverless Next.js Example
+        GitHub User Info
       </Heading>
       <Heading size="xs" mt={2} textAlign="center">
-        GitHub User Info
+        Serverless Next.js Example
       </Heading>
       <Box
         as="form"
